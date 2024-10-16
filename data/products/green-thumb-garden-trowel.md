@@ -1,4 +1,4 @@
---- 
+---
 name: Green Thumb Garden Trowel
 brand: Green Thumb
 price: 1599

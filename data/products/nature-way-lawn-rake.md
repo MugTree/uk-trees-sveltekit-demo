@@ -1,4 +1,4 @@
---- 
+---
 name: Nature Way Lawn Rake
 brand: Nature Way
 price: 2399

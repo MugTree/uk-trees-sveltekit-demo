@@ -1,14 +1,13 @@
-import { getBrandData } from "../../../lib/index.js";
+import { getProductData } from "../../../lib/index.js";
 
 export async function load({ params }) {
   const slug = params.slug;
 
-  const brands = getBrandData();
+  const data = await getProductData();
 
-  console.log("data :>> ", brands);
+  console.log("data :>> ", data);
 
   return {
     slug,
-    brands,
   };
 }

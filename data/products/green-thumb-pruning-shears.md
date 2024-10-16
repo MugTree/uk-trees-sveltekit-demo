@@ -1,4 +1,4 @@
---- 
+---
 name: Green Thumb Pruning Shears
 brand: Green Thumb
 price: 1999

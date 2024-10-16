@@ -1,4 +1,4 @@
---- 
+---
 name: Pro Dig Planting Hoe
 brand: Pro Dig
 price: 2099

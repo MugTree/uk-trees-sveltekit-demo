@@ -1,4 +1,4 @@
---- 
+---
 name: Green Thumb Watering Can
 brand: Green Thumb
 price: 2499

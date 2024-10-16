@@ -1,4 +1,4 @@
---- 
+---
 name: Pro Dig Edging Tool
 brand: Pro Dig
 price: 2299

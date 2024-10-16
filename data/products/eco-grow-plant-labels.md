@@ -1,4 +1,4 @@
---- 
+---
 name: Eco Grow Plant Labels
 brand: Eco Grow
 price: 599

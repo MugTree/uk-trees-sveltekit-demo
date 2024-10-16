@@ -1,4 +1,4 @@
---- 
+---
 name: Nature Way Hose Nozzle
 brand: Nature Way
 price: 1799

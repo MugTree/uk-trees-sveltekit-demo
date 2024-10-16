@@ -1,4 +1,4 @@
---- 
+---
 name: Green Thumb Weeder
 brand: Green Thumb
 price: 1499

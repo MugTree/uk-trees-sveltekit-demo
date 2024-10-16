@@ -1,4 +1,4 @@
---- 
+---
 name: Eco Grow Compost Bin
 brand: Eco Grow
 price: 4999
