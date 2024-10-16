@@ -6,7 +6,7 @@ sqlite3 -separator $'\x1F' gardening.db 'select slug, name, replace(writeup, cha
     newwriteup=$(echo -e "$writeup")
 
     cat <<EOF >$FILENAME
---- 
+---
 name: $name
 ---
 
