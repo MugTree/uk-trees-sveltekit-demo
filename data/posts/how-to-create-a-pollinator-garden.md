@@ -11,4 +11,3 @@ To create a successful pollinator garden, choose plants that bloom at different 
 ## Providing Shelter and Water  
 
 In addition to plants, pollinators need shelter and water. Include features like small water dishes and rock piles where insects can rest. Avoid using pesticides in your pollinator garden, as they can harm these beneficial creatures.
-

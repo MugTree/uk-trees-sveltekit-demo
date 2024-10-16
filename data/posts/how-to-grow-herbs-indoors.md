@@ -11,4 +11,3 @@ Not all herbs thrive indoors, so choose varieties like basil, mint, and thyme, w
 ## Watering and Care  
 
 Indoor herbs need regular watering but avoid overwatering. Allow the soil to dry out between waterings. Prune your herbs frequently to encourage growth and prevent them from becoming leggy.
-

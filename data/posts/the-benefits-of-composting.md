@@ -11,4 +11,3 @@ Composting involves breaking down organic matter like kitchen scraps, leaves, an
 ## Environmental Impact  
 
 Composting reduces the amount of waste sent to landfills, which lowers methane emissions. It’s a simple way to make your gardening more sustainable and eco-friendly. Start by setting up a compost bin and regularly adding organic material. Turn the pile to aerate it and speed up the decomposition process.
-
