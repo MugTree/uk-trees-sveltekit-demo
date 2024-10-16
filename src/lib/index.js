@@ -1,6 +1,7 @@
-// place files you want to import through the `$lib` alias in this folder.
 import data from "../../data/data.json";
 
-const getComparionData = () => data;
+const getBrandData = () => data;
 
-export { getComparionData };
+const getBlogData = () => ["some stuff"];
+
+export { getBrandData, getBlogData };
