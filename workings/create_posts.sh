@@ -4,12 +4,14 @@ sqlite3 -separator $'\x1F' gardening.db 'select slug, name, replace(writeup, cha
 
     FILENAME="/Users/me/Developer/sveltekit/test-app/data/posts/$slug.md"
 
+    newwriteup=$(echo -e "$writeup")
+
     cat <<EOF >$FILENAME
 --- 
-name: "$name"
+name: $name
+---
 
-$writeup
-
+$newwriteup
 EOF
 
 done

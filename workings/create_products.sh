@@ -4,15 +4,17 @@ sqlite3 -separator $'\x1F' gardening.db 'select slug, name, brand, price, size, 
 
     FILENAME="/Users/me/Developer/sveltekit/test-app/data/products/$slug.md"
 
+    newwriteup=$(echo -e "$writeup")
+
     cat <<EOF >$FILENAME
 --- 
-name: "$name"
-brand: "$brand"
+name: $name
+brand: $brand
 price: $price
 size: $size
+---
 
-$writeup
-
+$newwriteup
 EOF
 
 done
