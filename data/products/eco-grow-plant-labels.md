@@ -5,6 +5,8 @@ price: 599
 size: 50
 ---
 
+Keep track of your plants with Eco Grow Plant Labels, made from biodegradable materials. These eco-friendly labels are perfect for marking seed trays, pots, or garden beds, allowing you to easily identify your plants while reducing your environmental footprint.
+
 ## Organize Your Garden 
  
 The **Eco Grow Plant Labels** help you keep track of your plants and garden layout. These biodegradable labels are perfect for marking seedlings, herbs, and flowers without harming the environment.

@@ -5,6 +5,8 @@ price: 999
 size: 100
 ---
 
+Protect your hands while gardening with Nature Way Garden Gloves, designed for both comfort and durability. Made from breathable, flexible materials, they provide a secure grip and protect your hands from dirt, thorns, and moisture, helping you tackle any gardening task with ease.
+
 ## Protect Your Hands 
  
 The **Nature Way Garden Gloves** are designed to shield your hands from dirt, thorns, and harmful chemicals while providing superior comfort. These gloves offer the perfect balance of protection and flexibility for handling delicate plants.

@@ -6,6 +6,8 @@
 
 <h1>{data.brand.meta.name}</h1>
 
-<Comparison products={data.products} />
-
 <svelte:component this={data.component} />
+
+<h2>{data.brand.meta.name} products</h2>
+
+<Comparison products={data.products} />
