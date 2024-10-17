@@ -1,23 +1,29 @@
 <script lang="js">
-  export let products;
+  export let trees;
+  export let treeName;
 </script>
 
-<table>
+<table class="striped">
   <thead>
-    <th>Brand</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Size</th>
+    <tr>
+      <th>Tree</th>
+      <th>Max Age (y)</th>
+      <th>Max Height (m)</th>
+      <th>Est. number</th>
+    </tr>
   </thead>
-  {#each products as p}
-    <tbody>
-      <td>{p.meta.brand}</td>
-      <td>{p.meta.name}</td>
-      <td>{p.meta.price}</td>
-      <td>{p.meta.size}</td>
-    </tbody>
-  {/each}
+  <tbody>
+    {#each trees as t}
+      <tr>
+        <td>
+          <span class={t.meta.title === treeName ? "selected" : ""}
+            >{t.meta.title}</span
+          >
+        </td>
+        <td>{t.meta.maxAge}</td>
+        <td>{t.meta.maxHeight}</td>
+        <td>{t.meta.approxNumber}</td>
+      </tr>
+    {/each}
+  </tbody>
 </table>
-
-<style>
-</style>

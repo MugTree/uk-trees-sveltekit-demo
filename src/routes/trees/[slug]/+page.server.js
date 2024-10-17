@@ -2,22 +2,24 @@ import { getMapData, getMarkdownData, getQAData } from "../../../lib/repo.js";
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
-  const { slug } = params;
-  const trees = await getMarkdownData();
+  let trees = await getMarkdownData();
   const treeMaps = await getMapData();
   const qAndAs = await getQAData();
-  const treeData = trees.find((a) => a.slug === slug);
 
-  if (treeData === undefined) {
+  const { slug } = params;
+  const tree = trees.find((a) => a.slug === slug);
+  if (tree === undefined) {
     throw error(404, "Product not found");
   }
+
+  trees = trees.filter((t) => t.meta.slug !== slug);
 
   const treeMap = treeMaps.find((a) => a.slug === slug);
   const qa = qAndAs.find((a) => a.slug === slug);
 
-  console.log("treeData :>> ", treeData);
+  console.log("treeData :>> ", tree);
   console.log("treeMap :>> ", treeMap);
   console.log("qa :>> ", qa);
 
-  return { trees, tree: treeData };
+  return { trees, tree, qa };
 }

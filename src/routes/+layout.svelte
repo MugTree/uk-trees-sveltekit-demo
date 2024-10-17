@@ -1,5 +1,6 @@
 <script lang="js">
-  import "../pico.css";
+  import "../pico.min.css";
+  import "../basics.min.css";
 
   export let data;
 
@@ -10,16 +11,9 @@
 
 <main class="container">
   <header>
-    <nav>
-      <ul>
-        <li><strong>Acme Corp</strong></li>
-      </ul>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Products</a></li>
-      </ul>
-    </nav>
+    <h3 style="font-size: 21px; font-weight: bold">
+      <a class="secondary" href="/">UK Trees</a> 🌿
+    </h3>
   </header>
   <hr />
   <section><slot /></section>
