@@ -17,9 +17,9 @@ export const getMarkdownData = async (path) => {
 
   const iterables = Object.entries(markdown);
 
-  let products = await Promise.all(
-    iterables.map(async ([path, product]) => {
-      const a = await product();
+  let pages = await Promise.all(
+    iterables.map(async ([path, page]) => {
+      const a = await page();
 
       const prodctSlug = path
         .replace(/(\/index)?\.md/, "")
@@ -33,5 +33,5 @@ export const getMarkdownData = async (path) => {
     })
   );
 
-  return products;
+  return pages;
 };
