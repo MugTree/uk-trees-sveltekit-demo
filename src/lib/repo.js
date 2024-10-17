@@ -1,9 +1,13 @@
+// https://github.com/vitejs/vite/discussions/15397
+// having to return all the maps and then grab an item
+
+// Seems like a bit of an issue :(
+
 export const getMarkdownData = async () => {
   const markdown = import.meta.glob("../../data/trees/**/*.md");
-
   const iterables = Object.entries(markdown);
 
-  let pages = await Promise.all(
+  const pages = await Promise.all(
     iterables.map(async ([path, page]) => {
       const a = await page();
 
@@ -20,4 +24,40 @@ export const getMarkdownData = async () => {
   );
 
   return pages;
+};
+
+export const getMapData = async () => {
+  const treeMaps = import.meta.glob("../../data/trees/**/map.json");
+  const iterables = Object.entries(treeMaps);
+
+  const maps = await Promise.all(
+    iterables.map(async ([path, file]) => {
+      const tm = await file();
+
+      return {
+        slug: path.split("/")[4],
+        data: tm.default,
+      };
+    })
+  );
+
+  return maps;
+};
+
+export const getQAData = async () => {
+  const qanda = import.meta.glob("../../data/trees/**/qa.json");
+  const iterables = Object.entries(qanda);
+
+  const qandas = await Promise.all(
+    iterables.map(async ([path, file]) => {
+      const qa = await file();
+
+      return {
+        slug: path.split("/")[4],
+        data: qa.default,
+      };
+    })
+  );
+
+  return qandas;
 };
