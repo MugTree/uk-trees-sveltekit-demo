@@ -16,7 +16,7 @@
     <img
       loading="lazy"
       width="340px"
-      src={"/static/" + tree.meta.image.path}
+      src={"/static" + tree.meta.image.path}
       alt=""
     />
     <figcaption class="caption">

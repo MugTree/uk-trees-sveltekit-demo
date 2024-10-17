@@ -1,7 +1,4 @@
 <script lang="js">
-  import "../pico.min.css";
-  import "../basics.min.css";
-
   export let data;
 
   console.log("head data :>> ", data);
@@ -15,7 +12,6 @@
       <a class="secondary" href="/">UK Trees</a> 🌿
     </h3>
   </header>
-  <hr />
   <section><slot /></section>
 </main>
 <footer class="container">

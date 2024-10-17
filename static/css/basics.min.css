@@ -1,0 +1,74 @@
+.grid-item {
+  text-align: center;
+}
+
+.grid-head {
+  padding: 12px 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.spacer {
+  padding: 12px 0;
+}
+
+/* fix for buttons on map*/
+.leaflet-control-zoom a[role="button"] {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+}
+
+.databox {
+  display: flex;
+  flex-direction: row;
+}
+
+.databox .left {
+  padding-right: 24px;
+  flex-grow: 3;
+}
+
+.caption {
+  text-align: center;
+  padding-top: 10.5px;
+}
+
+.main-img {
+  float: right;
+  margin: 0 0 0 24px;
+}
+
+@media (max-width: 1300px) {
+  .databox {
+    display: block;
+  }
+  .databox .right {
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-img {
+    float: none;
+    margin: 0 auto 0 auto;
+    width: 340px;
+  }
+  details summary {
+    line-height: 1.5rem;
+  }
+}
+
+.selected {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+}
+header {
+  padding: 24px 0;
+}
