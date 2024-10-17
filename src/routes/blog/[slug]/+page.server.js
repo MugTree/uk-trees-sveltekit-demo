@@ -1,13 +1,14 @@
-import { getBlogData } from "../../../lib/index.js";
+import { getBlogData } from "../../../lib/repo.js";
 
 export async function load({ params }) {
   const slug = params.slug;
 
-  const data = await getBlogData();
+  const posts = await getBlogData();
 
-  console.log("data :>> ", data);
+  console.log("data :>> ", posts);
 
   return {
     slug,
+    posts: posts,
   };
 }
