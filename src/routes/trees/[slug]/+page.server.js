@@ -3,14 +3,13 @@ import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
   const { slug } = params;
-  const products = await getMarkdownData();
+  const trees = await getMarkdownData();
 
-  console.log("products :>> ", products);
-  const product = products.find((a) => a.slug === slug);
+  const tree = trees.find((a) => a.slug === slug);
 
-  if (product === undefined) {
+  if (tree === undefined) {
     throw error(404, "Product not found");
   }
 
-  return { products, product };
+  return { trees, tree };
 }

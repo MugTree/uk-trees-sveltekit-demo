@@ -1,7 +1,7 @@
 <script>
   export let data;
-  const { product } = data;
-  const props = { product };
+  const { tree } = data;
+  const props = { tree };
 </script>
 
 <svelte:component this={data.component} {...props} />
