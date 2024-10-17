@@ -1,25 +1,15 @@
-export const getMarkdownData = async (path) => {
-  let markdown = null;
+export const getMarkdownData = async () => {
+  const markdown = import.meta.glob("../../data/trees/**/*.md");
 
-  switch (path) {
-    case "products":
-      markdown = import.meta.glob("../../data/products/**/*.md");
-      break;
-    case "posts":
-      markdown = import.meta.glob("../../data/posts/**/*.md");
-      break;
-    case "brands":
-      markdown = import.meta.glob("../../data/brands/**/*.md");
-      break;
-    default:
-      return null;
-  }
+  console.log("markdown :>> ", markdown);
 
   const iterables = Object.entries(markdown);
 
   let pages = await Promise.all(
     iterables.map(async ([path, page]) => {
       const a = await page();
+
+      console.log("a :>> ", a);
 
       const prodctSlug = path
         .replace(/(\/index)?\.md/, "")

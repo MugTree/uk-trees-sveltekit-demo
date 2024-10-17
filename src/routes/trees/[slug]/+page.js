@@ -2,7 +2,7 @@ export async function load({ data }) {
   const { product, products } = data;
 
   const component = await import(
-    `../../../../data/products/${data.product.slug}.md`
+    `../../../../data/trees/${data.product.slug}/index.md`
   );
   return {
     products,

@@ -1,9 +1,11 @@
-import { getMarkdownData, pathToProducts } from "../../../lib/repo.js";
+import { getMarkdownData } from "../../../lib/repo.js";
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
   const { slug } = params;
-  const products = await getMarkdownData("products");
+  const products = await getMarkdownData();
+
+  console.log("products :>> ", products);
   const product = products.find((a) => a.slug === slug);
 
   if (product === undefined) {
