@@ -1,19 +1,5 @@
-export const getMarkdownData = async (path) => {
-  let markdown = null;
-
-  switch (path) {
-    case "products":
-      markdown = import.meta.glob("../../data/products/**/*.md");
-      break;
-    case "posts":
-      markdown = import.meta.glob("../../data/posts/**/*.md");
-      break;
-    case "brands":
-      markdown = import.meta.glob("../../data/brands/**/*.md");
-      break;
-    default:
-      return null;
-  }
+export const getMarkdownData = async () => {
+  const markdown = import.meta.glob("../../data/trees/**/*.md");
 
   const iterables = Object.entries(markdown);
 
@@ -21,14 +7,14 @@ export const getMarkdownData = async (path) => {
     iterables.map(async ([path, page]) => {
       const a = await page();
 
-      const prodctSlug = path
+      const treeSlug = path
         .replace(/(\/index)?\.md/, "")
         .split("/")
         .pop();
 
       return {
         meta: a.metadata,
-        slug: prodctSlug,
+        slug: treeSlug,
       };
     })
   );
