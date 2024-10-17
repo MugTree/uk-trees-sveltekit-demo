@@ -1,17 +1,26 @@
 <script lang="js">
   import "../pico.css";
+
+  export let data;
+
+  console.log("head data :>> ", data);
 </script>
 
 <svelte:head />
 
 <main class="container">
   <header>
-    <h3 style="font-size:21px;font-weight:700">
-      <a class="secondary" href="https://mugtree.github.io/uktrees/">UK Trees</a
-      > 🌿
-    </h3>
+    <nav>
+      <ul>
+        <li><strong>Acme Corp</strong></li>
+      </ul>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Products</a></li>
+      </ul>
+    </nav>
   </header>
-  <h1>Gardening site</h1>
   <hr />
   <section><slot /></section>
 </main>
