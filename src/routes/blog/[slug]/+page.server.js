@@ -1,14 +1,17 @@
-import { getBlogData } from "../../../lib/repo.js";
+import { getMarkdownData, PathToPosts } from "../../../lib/repo.js";
+import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
-  const slug = params.slug;
+  const { slug } = params;
+  const posts = await getMarkdownData("posts");
+  const post = posts.find((p) => p.slug === slug);
 
-  const posts = await getBlogData();
-
-  console.log("data :>> ", posts);
+  if (post === undefined) {
+    throw error(404, "Post not found");
+  }
 
   return {
-    slug,
-    posts: posts,
+    post,
+    posts,
   };
 }

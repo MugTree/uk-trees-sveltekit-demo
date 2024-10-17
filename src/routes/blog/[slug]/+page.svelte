@@ -2,6 +2,6 @@
   export let data;
 </script>
 
-<h1>123</h1>
+<h1>{data.post.meta.name}</h1>
 
-{data}
+<svelte:component this={data.component} />

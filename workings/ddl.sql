@@ -12,3 +12,10 @@ CREATE TABLE IF NOT EXISTS post (
      name TEXT NOT NULL,
      writeup TEXT NOT NULL  
 );
+
+CREATE TABLE IF NOT EXISTS brand (
+     slug TEXT PRIMARY KEY,
+     name TEXT NOT NULL,
+     writeup TEXT NOT NULL  
+);
+
