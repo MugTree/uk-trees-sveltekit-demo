@@ -1,7 +1,7 @@
 // https://github.com/vitejs/vite/discussions/15397
 // having to return all the maps and then grab an item
-
-// Seems like a bit of an issue :(
+// can use dynamic paths :(
+// not a massive issue as site is going to be a static render
 
 export const getMarkdownData = async () => {
   const markdown = import.meta.glob("../../data/trees/**/*.md");
