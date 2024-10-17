@@ -3,6 +3,7 @@
 // can use dynamic paths :(
 // not a massive issue as site is going to be a static render
 
+// would return all of the page data here its not serialisable
 export const getMarkdownData = async () => {
   const markdown = import.meta.glob("../../data/trees/**/*.md");
   const iterables = Object.entries(markdown);
