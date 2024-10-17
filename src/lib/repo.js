@@ -8,6 +8,9 @@ export const getMarkdownData = async (path) => {
     case "posts":
       markdown = import.meta.glob("../../data/posts/**/*.md");
       break;
+    case "brands":
+      markdown = import.meta.glob("../../data/brands/**/*.md");
+      break;
     default:
       return null;
   }
