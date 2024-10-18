@@ -1,7 +1,4 @@
 <script lang="js">
-  export let data;
-
-  console.log("head data :>> ", data);
 </script>
 
 <svelte:head />
