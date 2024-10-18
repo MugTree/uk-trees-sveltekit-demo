@@ -33,6 +33,12 @@ for dir in "${dirs[@]}"; do
         file=$(basename $fileName)
         echo $file
         magick "$fileName" -resize ${size}x${height} $dst/$dir/$file
+
+        # cgpt
+        # magick "$fileName" -gravity center -define jpeg:extent=340x160 -crop 340x160+0+0 $dst/$dir/thumbs/$file
+        magick "$fileName" -resize 340x160^ -gravity center -extent 340x160 $dst/$dir/thumbs/$file
+
+        # magick "$fileName" -gravity center -crop 340x160+0+0 $dst/$dir/thumbs/$file
     done
     i=0
 done
