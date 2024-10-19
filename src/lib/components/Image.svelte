@@ -1,0 +1,11 @@
+<script>
+  export let data;
+</script>
+
+<figure class="main-img">
+  <img loading="lazy" width="340px" src={"/static" + data.image.path} alt="" />
+  <figcaption class="caption">
+    Image by
+    <a href={data.image.path} class="secondary">{data.image.credit}</a>
+  </figcaption>
+</figure>

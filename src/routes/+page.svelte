@@ -1,9 +1,9 @@
 <script>
+  import GridItem from "../lib/components/GridItem.svelte";
   import { divideArrayWithMaxSize } from "../lib/lib";
   export let data;
   // create an even layout
   const layoutPages = divideArrayWithMaxSize(data.pages, 3);
-  const thumbnail = (path) => path.replace("trees", "trees/thumbs");
 </script>
 
 <h1>Welcome to this website British trees</h1>
@@ -24,19 +24,7 @@
     <div class="grid">
       {#each page as p}
         <div class="grid-item">
-          <a href={"/trees/" + p.slug}
-            ><img
-              alt=""
-              loading="lazy"
-              width="340px"
-              class="grid-img"
-              src={"/static" + thumbnail(p.meta.image.path)}
-            /></a
-          >
-          <h2 class="grid-head">
-            <a href={"/trees/" + p.slug}>{p.meta.title}</a>
-          </h2>
-          <p class="grid-content">{p.meta.summary}</p>
+          <GridItem data={p} />
         </div>
       {/each}
     </div>

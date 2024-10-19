@@ -1,9 +1,12 @@
 <script>
   import Comparison from "../../../lib/components/Comparison.svelte";
+  import Image from "../../../lib/components/Image.svelte";
+  import Map from "../../../lib/components/Map.svelte";
+  import Qa from "../../../lib/components/Qa.svelte";
 
   export let data;
   console.log("data :>> ", data);
-  $: ({ tree, trees, qa } = data);
+  $: ({ tree, trees, qa, treeMap } = data);
   const props = { tree };
 </script>
 
@@ -12,21 +15,7 @@
 <hr />
 
 <section>
-  <figure class="main-img">
-    <img
-      loading="lazy"
-      width="340px"
-      src={"/static" + tree.meta.image.path}
-      alt=""
-    />
-    <figcaption class="caption">
-      Image by
-      <a href={tree.meta.image.path} class="secondary"
-        >{tree.meta.image.credit}</a
-      >
-    </figcaption>
-  </figure>
-
+  <Image data={tree.meta} />
   <p><em>{tree.meta.summary}</em></p>
   <svelte:component this={data.component} {...props} />
   <div class="clear"></div>
@@ -38,6 +27,7 @@
   </div>
   <div class="databox">
     <div class="left"><Comparison {trees} treeName={tree.meta.title} /></div>
+    <Map data={treeMap} />
     <!-- <div class="right">{{ partial "map" . }}</div> -->
   </div>
 </section>
@@ -46,10 +36,7 @@
   <h2 class="spacer">Questions about {tree.meta.title} trees</h2>
   <hr />
   {#each qa.data as q}
-    <details>
-      <summary><b>{q.question}</b></summary>
-      <p>{q.answer}</p>
-    </details>
+    <Qa data={q} />
   {/each}
   <hr />
 </section>

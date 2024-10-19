@@ -21,5 +21,5 @@ export async function load({ params }) {
   console.log("treeMap :>> ", treeMap);
   console.log("qa :>> ", qa);
 
-  return { trees, tree, qa };
+  return { trees, tree, qa, treeMap };
 }
