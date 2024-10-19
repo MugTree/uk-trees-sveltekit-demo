@@ -1,7 +1,7 @@
 # Basic Sveltekit site
 
 - Pico CSS speed up development
-- Basic use of components
+- Simple use of components
 - Content created by AI (CGPT) and added to content folder (content.md and qanda.json)
 - Images initially resized using ImageMagik (thumbnails are trickier than Hugo)
   Imagemagick allow for a similar effect to hugos crop although chatgpt had to help with that

@@ -27,8 +27,7 @@
   </div>
   <div class="databox">
     <div class="left"><Comparison {trees} treeName={tree.meta.title} /></div>
-    <Map data={treeMap} />
-    <!-- <div class="right">{{ partial "map" . }}</div> -->
+    <div class="right"><Map data={treeMap} /></div>
   </div>
 </section>
 
