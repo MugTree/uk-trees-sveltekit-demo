@@ -17,9 +17,5 @@ export async function load({ params }) {
   const treeMap = treeMaps.find((a) => a.slug === slug);
   const qa = qAndAs.find((a) => a.slug === slug);
 
-  console.log("treeData :>> ", tree);
-  console.log("treeMap :>> ", treeMap);
-  console.log("qa :>> ", qa);
-
   return { trees, tree, qa, treeMap };
 }

@@ -1,5 +1,5 @@
 export async function load({ data }) {
-  const { tree, trees, qa } = data;
+  const { tree, trees, qa, treeMap } = data;
 
   // page content is grabbed here as allows for unserialised content to be passed
   const component = await import(
@@ -10,5 +10,6 @@ export async function load({ data }) {
     tree,
     qa,
     component: component.default,
+    treeMap,
   };
 }

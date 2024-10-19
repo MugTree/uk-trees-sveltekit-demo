@@ -1,13 +1,15 @@
 <script>
   import Comparison from "../../../lib/components/Comparison.svelte";
   import Image from "../../../lib/components/Image.svelte";
-  import Map from "../../../lib/components/Map.svelte";
+  import TreeMap from "../../../lib/components/TreeMap.svelte";
   import Qa from "../../../lib/components/Qa.svelte";
 
   export let data;
-  console.log("data :>> ", data);
   $: ({ tree, trees, qa, treeMap } = data);
-  const props = { tree };
+  console.log("data :>> ", data);
+
+  // pass some data into the markdown if that containts components
+  const props = tree;
 </script>
 
 <h1>{tree.meta.title} - ({tree.meta.latin})</h1>
@@ -27,7 +29,7 @@
   </div>
   <div class="databox">
     <div class="left"><Comparison {trees} treeName={tree.meta.title} /></div>
-    <div class="right"><Map data={treeMap} /></div>
+    <div class="right"><TreeMap markers={treeMap.data} /></div>
   </div>
 </section>
 
