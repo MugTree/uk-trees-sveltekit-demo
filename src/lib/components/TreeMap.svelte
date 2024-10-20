@@ -12,7 +12,7 @@
 
       const ms = document.createElement("script");
       ms.src = base + "/js/treesmap.js";
-      ms.async = true;
+      ms.defer = true;
       document.body.appendChild(ms);
     }
   });
