@@ -28,7 +28,9 @@
   </div>
   <div class="databox">
     <div class="left"><Comparison {trees} treeName={tree.meta.title} /></div>
-    <div class="right"><TreeMap markers={treeMap.data} /></div>
+    <div class="right">
+      <TreeMap markers={treeMap.data} tree={tree.meta.title} />
+    </div>
   </div>
 </section>
 
@@ -38,7 +40,6 @@
   {#each qa.data as q}
     <Qa data={q} />
   {/each}
-  <hr />
 </section>
 
 <section>

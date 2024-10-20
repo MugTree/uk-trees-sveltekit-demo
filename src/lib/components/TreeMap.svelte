@@ -2,10 +2,11 @@
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
   export let markers;
+  export let tree;
 
   onMount(() => {
     if (browser) {
-      // simple approach - make the markers data available to the script
+      // simple approach to make the markers data available to the treesmap.js script
       window.markersData = markers;
 
       const ms = document.createElement("script");
@@ -29,7 +30,6 @@
 </svelte:head>
 
 {#if browser}
-  {browser}
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
   <div
     id="treemap"
@@ -42,6 +42,5 @@
     class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     tabindex="0"
   ></div>
+  <p class="caption">{tree} trees in the UK</p>
 {/if}
-
-<p>This is the map script</p>
