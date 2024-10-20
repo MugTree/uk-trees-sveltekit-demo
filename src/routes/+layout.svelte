@@ -1,4 +1,5 @@
 <script lang="js">
+  import { base } from "$app/paths";
 </script>
 
 <svelte:head />
@@ -6,7 +7,7 @@
 <main class="container">
   <header>
     <h3 style="font-size: 21px; font-weight: bold">
-      <a class="secondary" href="/">UK Trees</a> 🌿
+      <a class="secondary" href={base}>UK Trees</a> 🌿
     </h3>
   </header>
   <section><slot /></section>

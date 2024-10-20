@@ -31,6 +31,12 @@ Other issues involved getting external scripts to run at the right time in a Sve
 Needs a static adaptor to run on git hub pages
 https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
 
+## To deploy
+
+- npm install gh-pages --save-dev
+
+npm run deploy
+
 ## Todo
 
 [x] sizing for screen sizes - media queries
