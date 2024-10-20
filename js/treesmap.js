@@ -1,5 +1,3 @@
-console.log("loaded");
-
 const mapElement = document.getElementById("treemap");
 
 if (mapElement) {
@@ -18,17 +16,14 @@ if (mapElement) {
   let bounds = [];
 
   for (let i = 0; i < markers.length; i++) {
-    // Create popup for each marker
-    const popup = L.popup()
+    L.popup()
       .setLatLng([markers[i].latitude, markers[i].longitude])
       .setContent(markers[i].name) // Use the name from markers array
       .addTo(map); // Add popup to map
 
-    // Add the marker position to bounds array for fitting the map
     bounds.push([markers[i].latitude, markers[i].longitude]);
   }
 
-  // Fit map to bounds after adding all markers
   map.fitBounds(bounds).zoomOut(1);
 } else {
   console.error("Map element not found!");
