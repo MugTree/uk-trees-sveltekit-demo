@@ -33,15 +33,17 @@ https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
 
 ## To deploy
 
-- npm install gh-pages --save-dev
+Ignore the workflow directory and just run
 
 npm run deploy
+
+- npm install gh-pages --save-dev
 
 ## Todo
 
 [x] sizing for screen sizes - media queries
 
-[] Add github pages adaptor
+[x] Add github pages adaptor
 
 [x] Add map script
 
