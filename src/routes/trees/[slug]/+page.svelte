@@ -1,5 +1,4 @@
 <script>
-  import { base } from "$app/paths";
   import Comparison from "../../../lib/components/Comparison.svelte";
   import Image from "../../../lib/components/Image.svelte";
   import TreeMap from "../../../lib/components/TreeMap.svelte";
