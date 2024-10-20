@@ -1,22 +1,35 @@
-const map = L.map("map");
+console.log("loaded");
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+const mapElement = document.getElementById("treemap");
 
-let bounds = [];
+if (mapElement) {
+  console.log("Map element found, attaching event listener for markers-loaded");
 
-for (let i = 0; i < markers.length; i++) {
-  // Create popup for each marker
-  const popup = L.popup()
-    .setLatLng([markers[i].latitude, markers[i].longitude])
-    .setContent(markers[i].name) // Use the name from markers array
-    .addTo(map); // Add popup to map
+  const markers = window.markersData;
+  console.log("markers :>> ", markers);
 
-  // Add the marker position to bounds array for fitting the map
-  bounds.push([markers[i].latitude, markers[i].longitude]);
+  const map = L.map("treemap");
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  let bounds = [];
+
+  for (let i = 0; i < markers.length; i++) {
+    // Create popup for each marker
+    const popup = L.popup()
+      .setLatLng([markers[i].latitude, markers[i].longitude])
+      .setContent(markers[i].name) // Use the name from markers array
+      .addTo(map); // Add popup to map
+
+    // Add the marker position to bounds array for fitting the map
+    bounds.push([markers[i].latitude, markers[i].longitude]);
+  }
+
+  // Fit map to bounds after adding all markers
+  map.fitBounds(bounds).zoomOut(1);
+} else {
+  console.error("Map element not found!");
 }
-
-// Fit map to bounds after adding all markers
-map.fitBounds(bounds).zoomOut(1);

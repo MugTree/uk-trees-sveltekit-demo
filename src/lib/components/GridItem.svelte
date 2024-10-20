@@ -9,7 +9,7 @@
     loading="lazy"
     width="340px"
     class="grid-img"
-    src={"/static" + thumbnail(data.meta.image.path)}
+    src={thumbnail(data.meta.image.path)}
   /></a
 >
 

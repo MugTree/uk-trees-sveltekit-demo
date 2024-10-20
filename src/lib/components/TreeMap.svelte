@@ -1,12 +1,38 @@
 <script>
   import { browser } from "$app/environment";
+  import { onMount } from "svelte";
   export let markers;
+
+  onMount(() => {
+    if (browser) {
+      // simple approach - make the markers data available to the script
+      window.markersData = markers;
+
+      const ms = document.createElement("script");
+      ms.src = "/js/treesmap.js";
+      ms.async = true;
+      document.body.appendChild(ms);
+    }
+  });
 </script>
 
+<svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+</svelte:head>
+
 {#if browser}
+  {browser}
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
   <div
-    id="map"
+    id="treemap"
     style="
     width: 340px;
     height: 340px;
@@ -15,19 +41,7 @@
   "
     class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     tabindex="0"
-  >
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      crossorigin=""
-    ></script>
-
-    <script src="/js/treesmap.js"></script>
-  </div>
+  ></div>
 {/if}
 
 <p>This is the map script</p>
