@@ -5,6 +5,7 @@
 - Content created by AI (CGPT) and added to content folder (content.md and qanda.json)
 - Images initially resized using ImageMagik (thumbnails are trickier than Hugo)
   Imagemagick allow for a similar effect to hugos crop although chatgpt had to help with that
+- Markdown usuage based on this https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog
 
 ## Issues
 
@@ -20,22 +21,30 @@ Had to create intermediate +page.js files to return the page content
 
 Both just add dependencies
 
+Other issues involved getting external scripts to run at the right time in a Svelte component
+
+- See <TreeMap>
+  /src/lib/components/TreeMap.svelte
+
+## Static adaptor
+
+Needs a static adaptor to run on git hub pages
+https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
+
 ## Todo
 
 [x] sizing for screen sizes - media queries
 
 [] Add github pages adaptor
 
-[] Add map script
+[x] Add map script
 
-[] Componentise
+[x] Componentise
 
-[] Fix CSS
+[x] Fix CSS
 
 [x] Add a robots.txt to keep out of indexes
 
 [x] Add a githubpages script to deploy
-
-[] basic js table sort - add data attributes
 
 ..
