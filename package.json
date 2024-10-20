@@ -6,7 +6,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && npx gh-pages -d build -t true"
+    "deploy": "npm run build && npx gh-pages -d build -t true --dotfiles"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.0.0",
