@@ -1,6 +1,7 @@
 <script>
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
   export let markers;
   export let tree;
 
@@ -10,7 +11,7 @@
       window.markersData = markers;
 
       const ms = document.createElement("script");
-      ms.src = "/js/treesmap.js";
+      ms.src = base + "/js/treesmap.js";
       ms.async = true;
       document.body.appendChild(ms);
     }
