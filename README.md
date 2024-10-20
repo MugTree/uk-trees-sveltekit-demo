@@ -1,5 +1,7 @@
 # Basic Sveltekit site
 
+🌎 https://mugtree.github.io/uk-trees-sveltekit-demo/
+
 - Pico CSS speed up development
 - Simple use of components
 - Content created by AI (CGPT) and added to content folder (content.md and qanda.json)
@@ -26,6 +28,8 @@ Other issues involved getting external scripts to run at the right time in a Sve
 - See <TreeMap>
   /src/lib/components/TreeMap.svelte
 
+This is still an issue on the live site :(
+
 ## Static adaptor
 
 Needs a static adaptor to run on git hub pages
@@ -33,7 +37,10 @@ https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
 
 ## To deploy
 
-Ignore the workflow directory and just run
+Uses
+https://www.npmjs.com/package/gh-pages
+
+Ignore using the workflow directory and just run
 
 npm run deploy
 
@@ -41,18 +48,9 @@ npm run deploy
 
 ## Todo
 
-[x] sizing for screen sizes - media queries
-
-[x] Add github pages adaptor
-
-[x] Add map script
-
-[x] Componentise
-
-[x] Fix CSS
-
-[x] Add a robots.txt to keep out of indexes
-
-[x] Add a githubpages script to deploy
+- [x] sizing for screen sizes - media queries
+- [x] Add github pages and static adaptor
+- [x] Add map script
+- [x] Componentise
 
 ..
