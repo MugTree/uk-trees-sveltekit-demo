@@ -46,11 +46,11 @@ npm run deploy
 
 ## Todo
 
-[x] sizing for screen sizes - media queries
-[x] Add github pages adaptor
-[x] Move script to a svelte component
-[x] Componentise
-[x] Fix CSS
-[x] Add a robots.txt to keep out of indexes
-[x] Add a githubpages script to deploy
-[] basic js table sort - add data attributes
+- [x] sizing for screen sizes - media queries
+- [x] Add github pages adaptor
+- [x] Move script to a svelte component
+- [x] Componentise
+- [x] Fix CSS
+- [x] Add a robots.txt to keep out of indexes
+- [x] Add a githubpages script to deploy
+- [] basic js table sort - add data attributes
