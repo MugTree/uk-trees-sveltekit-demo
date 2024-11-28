@@ -1,21 +1,88 @@
 <script>
-  import { browser } from "$app/environment";
   import { onMount } from "svelte";
-  import { base } from "$app/paths";
   export let markers;
   export let tree;
 
-  onMount(() => {
-    if (browser) {
-      // simple approach to make the markers data available to the treesmap.js script
-      window.markersData = markers;
+  console.log("markers :>> ", markers);
+  console.log("tree :>> ", tree);
 
-      const ms = document.createElement("script");
-      ms.src = base + "/js/treesmap.js";
-      ms.defer = true;
-      document.body.appendChild(ms);
+  let map;
+  let mapElement;
+
+  function loadLeaflet() {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
+      script.crossOrigin = "";
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("Failed to load Leaflet"));
+      document.body.appendChild(script);
+    });
+  }
+
+  async function initializeMap() {
+    if (!map) {
+      await loadLeaflet();
+      map = L.map(mapElement);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
     }
-  });
+    updateMap();
+  }
+
+  function updateMap() {
+    if (!map) return;
+    map.eachLayer((layer) => {
+      if (layer instanceof L.Marker || layer instanceof L.Popup) {
+        map.removeLayer(layer);
+      }
+    });
+
+    const bounds = [];
+    markers.forEach((marker) => {
+      L.popup()
+        .setLatLng([marker.latitude, marker.longitude])
+        .setContent(marker.name)
+        .addTo(map);
+      bounds.push([marker.latitude, marker.longitude]);
+    });
+
+    map.fitBounds(bounds).zoomOut(1);
+  }
+
+  $: if (markers) {
+    updateMap();
+  }
+
+  onMount(initializeMap);
+
+  // onMount(async () => {
+  //   try {
+  //     await loadLeaflet();
+
+  //     map = L.map(mapElement);
+  //     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  //       attribution:
+  //         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  //     }).addTo(map);
+
+  //     let bounds = [];
+  //     markers.forEach((marker) => {
+  //       L.popup()
+  //         .setLatLng([marker.latitude, marker.longitude])
+  //         .setContent(marker.name) // Use the name from markers array
+  //         .addTo(map);
+
+  //       bounds.push([marker.latitude, marker.longitude]);
+  //     });
+
+  //     map.fitBounds(bounds).zoomOut(1);
+  //   } catch (error) {
+  //     console.error("Error loading Leaflet or initializing the map:", error);
+  //   }
+  // });
 </script>
 
 <svelte:head>
@@ -24,24 +91,19 @@
     href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     crossorigin=""
   />
-  <script
-    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    crossorigin=""
-  ></script>
 </svelte:head>
 
-{#if browser}
-  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <div
-    id="treemap"
-    style="
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<div
+  bind:this={mapElement}
+  id="treemap"
+  style="
     width: 340px;
     height: 340px;
     position: relative;
     margin: 24px auto 0 auto;
   "
-    class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
-    tabindex="0"
-  ></div>
-  <p class="caption">{tree} trees in the UK</p>
-{/if}
+  class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+  tabindex="0"
+></div>
+<p class="caption">{tree} trees in the UK</p>

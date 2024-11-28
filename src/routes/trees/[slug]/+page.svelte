@@ -7,7 +7,6 @@
   export let data;
   $: ({ tree, trees, qa, treeMap } = data);
 
-  // pass some data into the markdown if that containts components
   const props = tree;
 </script>
 

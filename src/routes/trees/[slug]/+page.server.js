@@ -8,6 +8,7 @@ export async function load({ params }) {
 
   const { slug } = params;
   const tree = trees.find((a) => a.slug === slug);
+
   if (tree === undefined) {
     throw error(404, "Product not found");
   }
