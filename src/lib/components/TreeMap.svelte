@@ -49,6 +49,7 @@
       bounds.push([marker.latitude, marker.longitude]);
     });
 
+    // this isn't quite right!!
     map.fitBounds(bounds).zoomOut(1);
   }
 
@@ -57,32 +58,6 @@
   }
 
   onMount(initializeMap);
-
-  // onMount(async () => {
-  //   try {
-  //     await loadLeaflet();
-
-  //     map = L.map(mapElement);
-  //     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //       attribution:
-  //         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  //     }).addTo(map);
-
-  //     let bounds = [];
-  //     markers.forEach((marker) => {
-  //       L.popup()
-  //         .setLatLng([marker.latitude, marker.longitude])
-  //         .setContent(marker.name) // Use the name from markers array
-  //         .addTo(map);
-
-  //       bounds.push([marker.latitude, marker.longitude]);
-  //     });
-
-  //     map.fitBounds(bounds).zoomOut(1);
-  //   } catch (error) {
-  //     console.error("Error loading Leaflet or initializing the map:", error);
-  //   }
-  // });
 </script>
 
 <svelte:head>

@@ -20,22 +20,19 @@ Had to create intermediate +page.js files to return the page content
 
 Both just add dependencies
 
+## Script deploys to github pages using
+
+```bash
+npm run deploy
+```
+
 ## Todo
 
 [x] sizing for screen sizes - media queries
-
-[] Add github pages adaptor
-
-[] Add map script
-
-[] Componentise
-
-[] Fix CSS
-
+[x] Add github pages adaptor
+[x] Move script to a svelte component
+[x] Componentise
+[x] Fix CSS
 [x] Add a robots.txt to keep out of indexes
-
 [x] Add a githubpages script to deploy
-
 [] basic js table sort - add data attributes
-
-..
