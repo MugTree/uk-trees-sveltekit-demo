@@ -6,7 +6,12 @@
 - Simple use of components
 - Content created by AI (CGPT) and added to content folder (content.md and qanda.json)
 - Images initially resized using ImageMagik (thumbnails are trickier than Hugo)
-  Imagemagick allow for a similar effect to hugos crop although chatgpt had to help with that
+- Imagemagick allow for a similar effect to hugos crop although chatgpt had to help with that
+
+  ```shell
+  ./workings/image_sizing.sh
+  ```
+
 - Markdown usuage based on this https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog
 
 ## Issues
@@ -23,13 +28,6 @@ Had to create intermediate +page.js files to return the page content
 
 Both just add dependencies
 
-Other issues involved getting external scripts to run at the right time in a Svelte component
-
-- See <TreeMap>
-  /src/lib/components/TreeMap.svelte
-
-This is still an issue on the live site :(
-
 ## Static adaptor
 
 Needs a static adaptor to run on git hub pages
@@ -40,17 +38,19 @@ https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
 Uses
 https://www.npmjs.com/package/gh-pages
 
-Ignore using the workflow directory and just run
+Simply run...
 
+```bash
 npm run deploy
-
-- npm install gh-pages --save-dev
+```
 
 ## Todo
 
-- [x] sizing for screen sizes - media queries
-- [x] Add github pages and static adaptor
-- [x] Add map script
-- [x] Componentise
-
-..
+[x] sizing for screen sizes - media queries
+[x] Add github pages adaptor
+[x] Move script to a svelte component
+[x] Componentise
+[x] Fix CSS
+[x] Add a robots.txt to keep out of indexes
+[x] Add a githubpages script to deploy
+[] basic js table sort - add data attributes
