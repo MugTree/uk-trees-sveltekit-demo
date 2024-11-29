@@ -1,6 +1,6 @@
 <script>
   import { base } from "$app/paths";
-  export let data;
+  let { data } = $props();
   const thumbnail = (path) => path.replace("trees", "trees/thumbs");
 </script>
 

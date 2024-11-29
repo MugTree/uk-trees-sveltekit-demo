@@ -1,7 +1,7 @@
 <script>
   import GridItem from "../lib/components/GridItem.svelte";
   import { divideArrayWithMaxSize } from "../lib/lib";
-  export let data;
+  let { data } = $props();
   // create an even layout
   const layoutPages = divideArrayWithMaxSize(data.pages, 3);
 </script>

@@ -1,5 +1,12 @@
 <script lang="js">
   import { base } from "$app/paths";
+  /**
+   * @typedef {Object} Props
+   * @property {import('svelte').Snippet} [children]
+   */
+
+  /** @type {Props} */
+  let { children } = $props();
 </script>
 
 <svelte:head />
@@ -10,7 +17,7 @@
       <a class="secondary" href={base}>UK Trees</a> 🌿
     </h3>
   </header>
-  <section><slot /></section>
+  <section>{@render children?.()}</section>
 </main>
 <footer class="container">
   <hr />

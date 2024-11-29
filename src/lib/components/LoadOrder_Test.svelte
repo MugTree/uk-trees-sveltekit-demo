@@ -1,4 +1,6 @@
 <script>
+  import { run } from 'svelte/legacy';
+
   import { onMount } from "svelte";
 
   // second
@@ -13,7 +15,9 @@
   fetchData().then(() => console.log("3. fetched"));
 
   // fifth
-  $: console.log("4. reactive");
+  run(() => {
+    console.log("4. reactive");
+  });
 
   // third
   console.log("5. continued");

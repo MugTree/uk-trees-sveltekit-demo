@@ -1,6 +1,5 @@
 <script lang="js">
-  export let trees;
-  export let treeName;
+  let { trees, treeName } = $props();
 </script>
 
 <table class="striped">

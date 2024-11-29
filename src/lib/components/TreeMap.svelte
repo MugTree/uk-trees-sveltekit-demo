@@ -1,17 +1,21 @@
 <script>
+  import { run } from 'svelte/legacy';
+
   import { onMount } from "svelte";
 
-  // props
-  export let markers;
-  export let tree;
+  
+  /**
+   * @typedef {Object} Props
+   * @property {any} markers - props
+   * @property {any} tree
+   */
 
-  let leafletInstance; // Leaflet map instance
-  let mapElement; // Map DOM element
+  /** @type {Props} */
+  let { markers, tree } = $props();
 
-  // wait for a leafletInstance to become available before we draw map
-  $: if (markers && leafletInstance) {
-    draw();
-  }
+  let leafletInstance = $state(); // Leaflet map instance
+  let mapElement = $state(); // Map DOM element
+
 
   onMount(async () => {
     await setup();
@@ -82,6 +86,12 @@
       console.log("No markers to fit bounds.");
     }
   }
+  // wait for a leafletInstance to become available before we draw map
+  run(() => {
+    if (markers && leafletInstance) {
+      draw();
+    }
+  });
 </script>
 
 <svelte:head>
@@ -92,7 +102,7 @@
   />
 </svelte:head>
 
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
   bind:this={mapElement}
   id="treemap"
