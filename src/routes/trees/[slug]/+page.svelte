@@ -3,6 +3,7 @@
   import Image from "../../../lib/components/Image.svelte";
   import TreeMap from "../../../lib/components/TreeMap.svelte";
   import Qa from "../../../lib/components/Qa.svelte";
+  import LoadOrder_Test from "../../../lib/components/LoadOrder_Test.svelte";
 
   export let data;
   $: ({ tree, trees, qa, treeMap } = data);
@@ -14,6 +15,7 @@
 
 <hr />
 
+<!-- <LoadOrder_Test /> -->
 <section>
   <Image data={tree.meta} />
   <p><em>{tree.meta.summary}</em></p>

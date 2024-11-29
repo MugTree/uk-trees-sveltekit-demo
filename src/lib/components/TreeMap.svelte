@@ -5,23 +5,21 @@
   export let markers;
   export let tree;
 
-  let leafletObj; // Leaflet map instance
+  let leafletInstance; // Leaflet map instance
   let mapElement; // Map DOM element
 
-  // idea here is to just rerender the map rather than load the whole thing in every time.
-  $: if (markers && leafletObj) {
-    console.log("draw map");
+  // wait for a leafletInstance to become available before we draw map
+  $: if (markers && leafletInstance) {
     draw();
   }
 
   onMount(async () => {
-    console.log("set up map");
     await setup();
   });
 
   async function setup() {
-    // dont reload if script already exists
-    if (!leafletObj) {
+    console.log("setup()");
+    if (!leafletInstance) {
       try {
         let loadLeaflet = () => {
           return new Promise((resolve, reject) => {
@@ -38,31 +36,32 @@
         await loadLeaflet();
 
         // set component variable
-        leafletObj = L.map(mapElement);
+        leafletInstance = L.map(mapElement);
 
         // get the tiles that we can draw on
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(leafletObj);
+        }).addTo(leafletInstance);
       } catch (err) {
         console.log(err);
       }
     }
-    draw();
   }
 
   function draw() {
+    // console.log("draw()");
     // not addigned a value yet
-    if (!leafletObj) return;
+    if (!leafletInstance) return;
 
     console.log("drawing markers on map");
+    console.log("--------------------");
 
     // clear existing
     // ------------------------------------------
-    leafletObj.eachLayer((layer) => {
+    leafletInstance.eachLayer((layer) => {
       if (layer instanceof L.Marker || layer instanceof L.Popup) {
-        leafletObj.removeLayer(layer);
+        leafletInstance.removeLayer(layer);
       }
     });
 
@@ -73,12 +72,12 @@
       L.popup()
         .setLatLng([marker.latitude, marker.longitude])
         .setContent(marker.name)
-        .addTo(leafletObj);
+        .addTo(leafletInstance);
       bounds.push([marker.latitude, marker.longitude]);
     });
 
     if (bounds.length > 0) {
-      leafletObj.fitBounds(bounds);
+      leafletInstance.fitBounds(bounds);
     } else {
       console.log("No markers to fit bounds.");
     }
