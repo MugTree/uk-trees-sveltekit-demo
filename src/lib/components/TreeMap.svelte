@@ -5,11 +5,11 @@
   export let markers;
   export let tree;
 
-  let leafletObj;
-  let mapElement;
+  let leafletObj; // Leaflet map instance
+  let mapElement; // Map DOM element
 
   // idea here is to just rerender the map rather than load the whole thing in every time.
-  $: if (markers) {
+  $: if (markers && leafletObj) {
     console.log("draw map");
     draw();
   }
@@ -20,6 +20,7 @@
   });
 
   async function setup() {
+    // dont reload if script already exists
     if (!leafletObj) {
       try {
         let loadLeaflet = () => {
@@ -52,21 +53,22 @@
   }
 
   function draw() {
-    // return early if no map defined
+    // not addigned a value yet
     if (!leafletObj) return;
 
-    // ----------------------------
-    // remove old data
+    console.log("drawing markers on map");
+
+    // clear existing
+    // ------------------------------------------
     leafletObj.eachLayer((layer) => {
       if (layer instanceof L.Marker || layer instanceof L.Popup) {
         leafletObj.removeLayer(layer);
       }
     });
 
-    const bounds = [];
-
     // run through our markers value and push to the bounds array
     // -----------------------------------
+    const bounds = [];
     markers.forEach((marker) => {
       L.popup()
         .setLatLng([marker.latitude, marker.longitude])
@@ -75,9 +77,11 @@
       bounds.push([marker.latitude, marker.longitude]);
     });
 
-    // this isn't quite right!!
-    // ---------------------------
-    leafletObj.fitBounds(bounds).zoomOut(1);
+    if (bounds.length > 0) {
+      leafletObj.fitBounds(bounds);
+    } else {
+      console.log("No markers to fit bounds.");
+    }
   }
 </script>
 
