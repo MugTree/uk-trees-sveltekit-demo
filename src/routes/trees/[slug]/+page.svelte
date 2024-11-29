@@ -7,8 +7,8 @@
   import Qa from "../../../lib/components/Qa.svelte";
   import LoadOrder_Test from "../../../lib/components/LoadOrder_Test.svelte";
 
-  export let data;
-  $: ({ tree, trees, qa, treeMap } = data);
+  let { data } = $props();
+  let { tree, trees, qa, treeMap } = $derived(data);
 
   const p = tree;
 </script>
@@ -21,7 +21,7 @@
 <section>
   <Image data={tree.meta} />
   <p><em>{tree.meta.summary}</em></p>
-  <svelte:component this={data.component} {...p} />
+  <data.component {...p} />
   <div class="clear"></div>
 </section>
 
