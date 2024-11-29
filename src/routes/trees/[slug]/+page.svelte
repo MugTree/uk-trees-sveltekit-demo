@@ -1,5 +1,3 @@
-<!-- @migration-task Error while migrating Svelte code: migrating this component would require adding a `$props` rune but there's already a variable named props.
-     Rename the variable and try again or migrate by hand. -->
 <script>
   import Comparison from "../../../lib/components/Comparison.svelte";
   import Image from "../../../lib/components/Image.svelte";
@@ -9,8 +7,6 @@
 
   let { data } = $props();
   let { tree, trees, qa, treeMap } = $derived(data);
-
-  const p = tree;
 </script>
 
 <h1>{tree.meta.title} - ({tree.meta.latin})</h1>
@@ -21,7 +17,7 @@
 <section>
   <Image data={tree.meta} />
   <p><em>{tree.meta.summary}</em></p>
-  <data.component {...p} />
+  <data.component {...tree} />
   <div class="clear"></div>
 </section>
 
