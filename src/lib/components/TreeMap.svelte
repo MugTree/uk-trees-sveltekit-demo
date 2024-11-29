@@ -1,63 +1,84 @@
 <script>
   import { onMount } from "svelte";
+
+  // props
   export let markers;
   export let tree;
 
-  console.log("markers :>> ", markers);
-  console.log("tree :>> ", tree);
-
-  let map;
+  let leafletObj;
   let mapElement;
 
-  function loadLeaflet() {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
-      script.crossOrigin = "";
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error("Failed to load Leaflet"));
-      document.body.appendChild(script);
-    });
+  // idea here is to just rerender the map rather than load the whole thing in every time.
+  $: if (markers) {
+    console.log("draw map");
+    draw();
   }
 
-  async function initializeMap() {
-    if (!map) {
-      await loadLeaflet();
-      map = L.map(mapElement);
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
+  onMount(async () => {
+    console.log("set up map");
+    await setup();
+  });
+
+  async function setup() {
+    if (!leafletObj) {
+      try {
+        let loadLeaflet = () => {
+          return new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
+            script.crossOrigin = ""; // ?
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error("Failed to load Leaflet"));
+            document.body.appendChild(script);
+          });
+        };
+
+        // load L into global scope
+        await loadLeaflet();
+
+        // set component variable
+        leafletObj = L.map(mapElement);
+
+        // get the tiles that we can draw on
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(leafletObj);
+      } catch (err) {
+        console.log(err);
+      }
     }
-    updateMap();
+    draw();
   }
 
-  function updateMap() {
-    if (!map) return;
-    map.eachLayer((layer) => {
+  function draw() {
+    // return early if no map defined
+    if (!leafletObj) return;
+
+    // ----------------------------
+    // remove old data
+    leafletObj.eachLayer((layer) => {
       if (layer instanceof L.Marker || layer instanceof L.Popup) {
-        map.removeLayer(layer);
+        leafletObj.removeLayer(layer);
       }
     });
 
     const bounds = [];
+
+    // run through our markers value and push to the bounds array
+    // -----------------------------------
     markers.forEach((marker) => {
       L.popup()
         .setLatLng([marker.latitude, marker.longitude])
         .setContent(marker.name)
-        .addTo(map);
+        .addTo(leafletObj);
       bounds.push([marker.latitude, marker.longitude]);
     });
 
     // this isn't quite right!!
-    map.fitBounds(bounds).zoomOut(1);
+    // ---------------------------
+    leafletObj.fitBounds(bounds).zoomOut(1);
   }
-
-  $: if (markers) {
-    updateMap();
-  }
-
-  onMount(initializeMap);
 </script>
 
 <svelte:head>
