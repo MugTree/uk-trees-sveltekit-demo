@@ -3,7 +3,7 @@
   import Image from "../../../lib/components/Image.svelte";
   import TreeMap from "../../../lib/components/TreeMap.svelte";
   import Qa from "../../../lib/components/Qa.svelte";
-  import LoadOrder_Test from "../../../lib/components/LoadOrder_Test.svelte";
+  // import LoadOrder_Test from "../../../lib/components/LoadOrder_Test.svelte";
 
   let { data } = $props();
   let { tree, trees, qa, treeMap } = $derived(data);
@@ -45,7 +45,7 @@
   <h2 class="spacer">Other trees</h2>
   <ul>
     {#each trees as t}
-      <li><a href={t.slug}>{t.meta.title}</a></li>
+      <li><a href="/trees/{t.slug}">{t.meta.title}</a></li>
     {/each}
   </ul>
 </section>

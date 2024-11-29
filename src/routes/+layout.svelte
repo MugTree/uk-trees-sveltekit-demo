@@ -1,5 +1,7 @@
 <script lang="js">
   import { base } from "$app/paths";
+
+  console.log("base :>> ", base);
   /**
    * @typedef {Object} Props
    * @property {import('svelte').Snippet} [children]
@@ -14,7 +16,7 @@
 <main class="container">
   <header>
     <h3 style="font-size: 21px; font-weight: bold">
-      <a class="secondary" href={base}>UK Trees</a> 🌿
+      <a class="secondary" href="/">UK Trees</a> 🌿
     </h3>
   </header>
   <section>{@render children?.()}</section>
