@@ -1,4 +1,5 @@
 <script>
+  import { base } from "$app/paths";
   import Comparison from "../../../lib/components/Comparison.svelte";
   import Image from "../../../lib/components/Image.svelte";
   import TreeMap from "../../../lib/components/TreeMap.svelte";
@@ -45,7 +46,7 @@
   <h2 class="spacer">Other trees</h2>
   <ul>
     {#each trees as t}
-      <li><a href="/trees/{t.slug}">{t.meta.title}</a></li>
+      <li><a href={base + "/trees/" + t.slug}>{t.meta.title}</a></li>
     {/each}
   </ul>
 </section>
