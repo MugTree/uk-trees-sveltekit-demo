@@ -14,7 +14,7 @@
 <main class="container">
   <header>
     <h3 style="font-size: 21px; font-weight: bold">
-      <a class="secondary" href={base}>UK Trees</a> 🌿
+      <a class="secondary" href={base + "/"}>UK Trees</a> 🌿
     </h3>
   </header>
   <section>{@render children?.()}</section>
