@@ -12,7 +12,10 @@ const config = {
       fallback: "404.html",
     }),
     paths: {
-      base: process.env.NODE_ENV === "development" ? "" : process.env.BASE_PATH,
+      base:
+        process.env.NODE_ENV === "development"
+          ? ""
+          : `/${process.env.BASE_PATH}`,
     },
   },
 
