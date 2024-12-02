@@ -1,8 +1,6 @@
 <script>
-  import { run } from "svelte/legacy";
-
   import { onMount } from "svelte";
-
+  
   /**
    * @typedef {Object} Props
    * @property {any} markers - props
@@ -14,6 +12,7 @@
 
   let leafletInstance = $state(); // Leaflet map instance
   let mapElement = $state(); // Map DOM element
+
 
   onMount(async () => {
     await setup();
@@ -85,7 +84,7 @@
     }
   }
   // wait for a leafletInstance to become available before we draw map
-  $effect(() => {
+ $effect(() => {
     if (markers && leafletInstance) {
       draw();
     }
